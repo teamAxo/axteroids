@@ -1,47 +1,80 @@
-const io = require('socket.io-client')
-const paper = require('paper')
-const { redraw } = require('./rendering/render')
-const createGameController = require('./state/gameStateController')
-const actions = require('./state/actions')
+const io = require('socket.io-client');
+const actions = require('./state/actions');
+const socket = io();
 
-let gameController
-const socket = io()
-socket.emit('initialize', { atPlayerTime: Date.now() })
-socket.on('initialize', ({ player, atPlayerTime, atServerTime }) => {
-    currentTime = Date.now()
-    const serverDelay = (currentTime - atPlayerTime) / 2
-    const serverOffset = -(currentTime - serverDelay - atServerTime)
-    const startingGameTime = currentTime - serverDelay + serverOffset
-    gameController = createGameController(player, socket, serverDelay, serverOffset, startingGameTime)
-})
+const paper = require('paper');
 
-paper.install(window)
+const { redraw } = require('./rendering/render');
+const createGameController = require('./state/gameStateController');
+
+//TODO: make sure Date.now() works as expected
+//###########################################
+socket.emit('clientInitialize', { atPlayerTime: Date.now() });
+
+let gameController;
+socket.on('serverInitialize', ({ player, atPlayerTime, atServerTime }) => {
+    let currentTime = Date.now();
+    const serverDelay = (currentTime - atPlayerTime) / 2;
+    const serverOffset = -(currentTime - serverDelay - atServerTime);
+    const startingGameTime = currentTime - serverDelay + serverOffset;
+    gameController = createGameController(player, socket, null, null, null);
+});
+
+paper.install(window);
 
 window.onload = function () {
-    const canvas = document.getElementById('myCanvas')
+    const canvas = document.getElementById('myCanvas');
     paper.setup(canvas);
-    var tool = new paper.Tool()
-
-    // createShip({ x: 400, y: 400 }, 90)
+    let tool = new paper.Tool();
 
     tool.onKeyDown = function (event) {
         if (gameController) {
+<<<<<<< HEAD
             if (event.key === 'up') {
                 gameController.initiateAction(actions.startMoving())
             } else if (event.key === 'down') {
                 gameController.initiateAction(actions.stopMoving())
             } else if (event.key === 'left') {
             } else if (event.key === 'right') {
+=======
+            switch (event.key) {
+                case 'left':
+                    gameController.initiateAction(actions.startTurning('left'));
+                    break;
+                case 'right':
+                    gameController.initiateAction(actions.startTurning('right'));
+                    break;
+                case 'up':
+                    gameController.initiateAction(actions.startMoving());
+                    break;
             }
         }
-    }
+    };
+
+    tool.onKeyUp = function (event) {
+        if (gameController) {
+            switch (event.key) {
+                case 'left':
+                    gameController.initiateAction(actions.stopTurning());
+                    break;
+                case 'right':
+                    gameController.initiateAction(actions.stopTurning());
+                    break;
+                case 'up':
+                    gameController.initiateAction(actions.stopMoving());
+                    break;
+>>>>>>> 5eab39379b01c1bd75f52efeebad431a9bbee3cc
+            }
+        }
+    };
 
     view.onFrame = function (event) {
         if (gameController) {
-            const currentState = gameController.currentState()
-            redraw(currentState, project.activeLayer)
+            const currentState = gameController.currentState();
+            redraw(currentState, project.activeLayer);
         }
     }
+<<<<<<< HEAD
 
 }
 
@@ -68,3 +101,6 @@ function createShip({ x, y }, rotation) {
     ship.rotate(angle);
     return ship
 }
+=======
+};
+>>>>>>> 5eab39379b01c1bd75f52efeebad431a9bbee3cc

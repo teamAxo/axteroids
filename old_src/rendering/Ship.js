@@ -12,7 +12,7 @@ function createShip({ x, y }, direction, color) {
 
     var ship = new CompoundPath({
         children: [
-            triangle, triangle2
+            triangle, triangle2, circle
         ],
         // selected: true
     })
