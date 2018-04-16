@@ -31,7 +31,6 @@ window.onload = function () {
             } else if (event.key === 'down') {
                 gameController.initiateAction(actions.stopMoving())
             } else if (event.key === 'left') {
-                debugger;
             } else if (event.key === 'right') {
 
             }
