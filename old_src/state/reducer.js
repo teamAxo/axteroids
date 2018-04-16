@@ -14,16 +14,24 @@ function reducer(state, action) {
         case 'stop turning':
             return updatePlayer(action, 'turnDirection', null, state)
 
+        case 'shoot':
+
+
         default: return state
     }
 }
 
 
 function updatePlayer(action, prop, value, state) {
-    const updatedPositions = tick(state, action.atServerTime);
-    const nextPlayer = updateProperty(updatedPositions.player1, prop, value);
-    const updatedPlayer = updateProperty(updatedPositions, action.player, nextPlayer);
-    return { ...updatedPlayer, action };
+    const updatedPositions = tick(state, action.atServerTime)
+    const nextPlayer = updateProperty(getPlayer(action.player, updatedPositions), prop, value)
+    const updatedPlayer = updateProperty(updatedPositions, action.player, nextPlayer)
+    // console.log('old player: ', state.player1, 'new player: ', updatedPlayer.player1)
+    return { ...updatedPlayer, action }
+}
+
+function getPlayer(player, state) {
+    return player === 'player1' ? state.player1 : state.player2
 }
 
 function updateProperty(obj, prop, value) {

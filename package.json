@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "node server.js",
-    "dev": "webpack-dev-server -d --open"
+    "build": "webpack",
+    "dev": "webpack && npm start"
   },
   "author": "",
   "license": "ISC",
