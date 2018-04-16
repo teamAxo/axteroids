@@ -7,7 +7,7 @@ function tick(state, gameTime) {
     // console.log('time delta', gameTime - state.gameTime)
     // console.log('starting player', state.player1)
     const player1 = moveAndRotate(state.player1, state.gameTime, gameTime)
-    const player2 = moveAndRotate(state.player2, state.gameTime, gameTime)
+    // const player2 = moveAndRotate(state.player2, state.gameTime, gameTime)
     //move bullets
     //move asteroids
     // console.log(player1.position)

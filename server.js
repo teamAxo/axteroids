@@ -29,18 +29,18 @@ io.on('connection', (socket) => {
     if (socket.player) {
         //this is a custom action coming from the client side 
         //located at index.js
-        socket.on('initialize', (timeStamp) => {
+        socket.on('clientInitialize', (timeStamp) => {
             timeStamp.player = socket.player
             timeStamp.atServerTime = Date.now()
-            socket.emit('initialize', timeStamp)
+            socket.emit('serverInitialize', timeStamp)
         })
 
         //Anytime the user does something, 
         //we catch that action here and then emit 
         //that action back all the clients
-        socket.on('action', (action) => {
+        socket.on('clientAction', (action) => {
             action.atServerTime = Date.now()
-            io.emit('action', action)
+            io.emit('serverAction', action)
         })
 
         //This is not custom. Socket.io disconnect 
