@@ -23,6 +23,7 @@ const initialState = {
     asteroids: [asteroid1],
     action: { id: NaN },
     gameTime: 0,
+    asteroidCollision : false,
 }
 
 
