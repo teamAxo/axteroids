@@ -66,16 +66,6 @@ function nextDriftPosition(player, newTime) {
 }
 
 function nextDirection(player, timeDelta) {
-<<<<<<< HEAD
-    //Calculate how much we actually rotate
-    const rotation = player.rotation * timeDelta;
-    //The initial direction we are pointed at
-    startVector = new Point(player.direction.x, player.direction.y);
-    //Calculate the new vector we need to rotate towards
-    const nextVector = startVector.rotate(player.turnDirection === "right" ? rotation : -rotation);
-    //return the new direction to point to
-    return { x: nextVector.x, y: nextVector.y };
-=======
   //Calculate how much we actually rotate
   const rotation = player.rotation * timeDelta;
   //The initial direction we are pointed at
@@ -84,7 +74,6 @@ function nextDirection(player, timeDelta) {
   const nextVector = startVector.rotate(player.turnDirection === "right" ? rotation : -rotation);
   //return the new direction to point to
   return { x: nextVector.x, y: nextVector.y };
->>>>>>> 738205384ad258a7a41c12414576f4da964da5e3
 }
 
 module.exports = playerTick;
