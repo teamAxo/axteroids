@@ -9,8 +9,9 @@ const player1 = {
 }
 
 const asteroid1 = {
-    position: {x: 270, y: 200},
-    direction: {x: .2, y: .4},
+    position: {x: 70, y: 80},
+    direction: {x: .6, y: -.2},
+    velocity: {x: 1, y: 1},
     speed: .15,
 }
 
@@ -24,6 +25,7 @@ const initialState = {
     action: { id: NaN },
     gameTime: 0,
     asteroidCollision : false,
+    shipCollision: false,
 }
 
 
