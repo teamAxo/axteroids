@@ -17,6 +17,6 @@ function newAstPosition(asteroid, timeDelta) {
 
     console.log('New position being added!', asteroid.position)
     return { x: asteroid.position.x, y: asteroid.position.y };
-
+} 
 
 module.exports = asteroidTick;
