@@ -9,8 +9,9 @@ const player1 = {
 }
 
 const asteroid1 = {
-    position: {x: 450, y: 500},
-    direction: {x: 0, y: 1}
+    position: {x: 270, y: 200},
+    direction: {x: .2, y: .4},
+    speed: .15,
 }
 
 const player2 = player1

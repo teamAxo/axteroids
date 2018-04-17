@@ -1,6 +1,9 @@
-function createAsteroid({x, y}, direction, color){
-    var circle = new Path.Circle(new Point(x, y), radius);
-
-    return circle;
+function createAsteroid({ x, y }, direction, color) {
+    var decagon = new Path.RegularPolygon(new Point(x, y), 20, 37);
+    decagon.fillColor = 'blue';
+    decagon.selected = false;
+    return decagon;
 
 }
+
+module.exports = createAsteroid;
