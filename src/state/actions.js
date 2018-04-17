@@ -10,6 +10,18 @@ function stopMoving() {
     }
 }
 
+function startAccelerating() {
+  return {
+      type: "start accelerating",
+  }
+}
+
+function stopAccelerating() {
+  return {
+      type: "stop accelerating",
+  }
+}
+
 function startTurning(direction) {
     return {
         type: "start turning",
@@ -33,6 +45,8 @@ function shoot() {
 module.exports = {
     startMoving,
     stopMoving,
+    startAccelerating,
+    stopAccelerating,
     startTurning,
     stopTurning,
     shoot,

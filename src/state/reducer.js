@@ -22,6 +22,19 @@ function reducer(state, action) {
             updatedPlayer = updateProperty(updatedPositions, action.player, nextPlayer);
             return { ...updatedPlayer, action };
 
+        case 'start accelerating':
+        // updatedPositions = state; 
+          updatedPositions = tickCombine(state, action.atServerTime);
+          nextPlayer = updateProperty(updatedPositions.player1, 'isAccelerating', true);
+          updatedPlayer = updateProperty(updatedPositions, action.player, nextPlayer);
+          return { ...updatedPlayer, action };
+
+        case 'stop accelerating':
+            updatedPositions = tickCombine(state, action.atServerTime);
+            nextPlayer = updateProperty(updatedPositions.player1, 'isAccelerating', false);
+            updatedPlayer = updateProperty(updatedPositions, action.player, nextPlayer);
+            return { ...updatedPlayer, action };
+
         case 'start turning':
             updatedPositions = tickCombine(state, action.atServerTime);
             nextPlayer = updateProperty(updatedPositions.player1, 'turnDirection', action.direction);

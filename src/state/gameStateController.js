@@ -1,7 +1,10 @@
 const reducer = require('./reducer');
 const { initialState } = require('./initialState');
 const actions = require('./actions');
+
 const asteroidReducer = require('./asteroidReducer');
+const collisionReducer = require('./collisionReducer');
+const collisionShipReducer = require('./collisionShipReducer');
 
 const tickCombine = require('../ticks/tickCombine');
 
@@ -39,9 +42,18 @@ function createGameController(player, socket, serverDelay, serverOffset, startin
         },
 
         currentState(){
-            //move asteroids even when there are no user actions 
+            //move asteroids even when there are no user actions
             this.moveAsteroids();
             let gameTime = Date.now() - serverDelay + serverOffset;
+
+            if (collisionReducer(history[history.length - 1], gameTime).asteroidCollision) {
+              history = [initialState];
+            }
+
+            if (collisionShipReducer(history[history.length - 1], gameTime).shipCollision){
+                history = [initialState];
+            }
+            
             // console.log('Inside currentState (gameController): State: ', history[history.length - 1], gameTime);
             return tickCombine(history[history.length - 1], gameTime);
         }

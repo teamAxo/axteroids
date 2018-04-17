@@ -37,7 +37,7 @@ window.onload = function () {
                     gameController.initiateAction(actions.startTurning('right'));
                     break;
                 case 'up':
-                    gameController.initiateAction(actions.startMoving());
+                    gameController.initiateAction(actions.startAccelerating());
                     break;
                 case 'space':
                     gameController.initiateAction(actions.shoot());
@@ -56,7 +56,7 @@ window.onload = function () {
                     gameController.initiateAction(actions.stopTurning());
                     break;
                 case 'up':
-                    gameController.initiateAction(actions.stopMoving());
+                    gameController.initiateAction(actions.stopAccelerating());
                     break;
             }
         }
