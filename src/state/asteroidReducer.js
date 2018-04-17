@@ -2,8 +2,6 @@ const tickCombine = require('../ticks/tickCombine')
 
 
 function asteroidReducer(state) {
-    console.log("Inside asteroid reducer: ", state)
-
     let newAsteroidPos = state.asteroids[0];
     
     newAsteroidPos.position.y += newAsteroidPos.velocity.y;
@@ -24,8 +22,6 @@ function asteroidReducer(state) {
     if (newAsteroidPos.position.y >= 500){
         newAsteroidPos.velocity.y *= -1;
     }
-
-    console.log("Compare asteroids: ", state.asteroids[0]);
 
     return { ...state, asteroids: [newAsteroidPos] };
 

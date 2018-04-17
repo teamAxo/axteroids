@@ -3,8 +3,9 @@ const player1 = {
     direction: { x: 0, y: 1 },
     turnDirection: null,
     isMoving: false,
-    speed: .15,
-    rotation: .5,
+    isAccelerating: false,
+    velocity: {x: 0, y: 0, time: 0},
+    rotation: .3,
 }
 
 const asteroid1 = {
@@ -23,6 +24,7 @@ const initialState = {
     asteroids: [asteroid1],
     action: { id: NaN },
     gameTime: 0,
+    asteroidCollision : false,
 }
 
 
