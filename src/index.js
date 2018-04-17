@@ -4,7 +4,7 @@ const socket = io();
 
 const paper = require('paper');
 
-const { redraw } = require('./rendering/render');
+const { redraw, redrawShit } = require('./rendering/render');
 const createGameController = require('./state/gameStateController');
 
 //TODO: make sure Date.now() works as expected
@@ -39,6 +39,9 @@ window.onload = function () {
                 case 'up':
                     gameController.initiateAction(actions.startMoving());
                     break;
+                case 'space':
+                    gameController.initiateAction(actions.shoot());
+                    break;
             }
         }
     };
@@ -64,5 +67,10 @@ window.onload = function () {
             const currentState = gameController.currentState();
             redraw(currentState, project.activeLayer);
         }
+
+        // if (event.key === 'space') {
+        //   const currentState = gameController.currentState();
+        //   redrawShit(currentState, project.activeLayer);
+        // }
     }
 };

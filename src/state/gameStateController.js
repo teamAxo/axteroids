@@ -16,7 +16,7 @@ function createGameController(player, socket, serverDelay, serverOffset, startin
             history = history;
         }
     })
-    
+
     function decorateAction(action, time) {
         return {...action, atPlayerTime: time, player, id: actionID += 1};
     }
@@ -34,7 +34,7 @@ function createGameController(player, socket, serverDelay, serverOffset, startin
 
         currentState(){
             let gameTime = Date.now() - serverDelay + serverOffset;
-            console.log('Inside currentState (gameController): State: ', history[history.length - 1], gameTime);
+            // console.log('Inside currentState (gameController): State: ', history[history.length - 1], gameTime);
             return tickCombine(history[history.length - 1], gameTime);
         }
     }

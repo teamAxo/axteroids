@@ -12,6 +12,12 @@ const asteroid1 = {
     direction: {x: 0, y: 1}
 }
 
+const bullet = {
+  position: {x: 0, y: 0},
+  direction: {x: 0, y: 1},
+  speed: .3,
+}
+
 const player2 = player1
 
 const initialState = {
