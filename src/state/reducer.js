@@ -33,23 +33,16 @@ function reducer(state, action) {
             nextPlayer = updateProperty(updatedPositions.player1, 'turnDirection', null);
             updatedPlayer = updateProperty(updatedPositions, action.player, nextPlayer);
             return { ...updatedPlayer, action };
-        case 'start shooting':
-            const vector = new Point(100, 100);
-            const radius = 1000;
-            const circle = new Path.Circle(new Point(100, 200), radius);
-            circle.fillColor = 'red';
-            console.log('Shootin');
-            return tickCombine(state, action.atServerTime);
-
-            // updatedPositions = tickCombine(state, action.atServerTime);
-            // nextBullet = updateProperty(updatedPositions.bullet, '', action.direction);
-            // updatedBullet = updateProperty(updatedPositions, action.player, nextBullet);
-            // return { ...updatedBullet, action};
-        case 'stop shooting':
-            // updatedPositions = tickCombine(state, action.atServerTime);
-            // nextBullet = updateProperty(updatedPositions.bullet, '', null);
-            // updatedBullet = updateProperty(updatedPositions, action.player, nextBullet);
-            // return { ...updatedBullet, action};
+        case 'shoot':
+            updatedPositions = tickCombine(state, action.atServerTime);
+            const newBullet = {
+              position: state.player1.position,
+              direction: state.player1.direction,
+            };
+            const bullets = [...state.bullets, newBullet];
+            const newState = { ...updatedPositions, bullets };
+            // console.log(newState);
+            return newState;
 
         default: return state;
     }

@@ -8,14 +8,15 @@ const player1 = {
 }
 
 const asteroid1 = {
-    position: {x: 450, y: 500},
-    direction: {x: 0, y: 1}
+    position: {x: 270, y: 200},
+    direction: {x: .2, y: .4},
+    speed: .15,
 }
 
 const bullet = {
   position: {x: 0, y: 0},
-  direction: {x: 0, y: 1},
-  speed: .3,
+  direction: {x: 5, y: 5},
+  speed: .2,
 }
 
 const player2 = player1

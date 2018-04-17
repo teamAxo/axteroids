@@ -1,20 +1,20 @@
-const createShip = require('./Ship');
+const createShip = require('./Ship')
+const createAsteroid =  require('./Asteroid');
 const createBullet = require('./Bullet');
 
 function redraw(state, layer) {
     layer.remove()
     new Layer()
     const player1Ship = createShip(state.player1.position, state.player1.direction, 'cyan');
-    const bullet = createBullet({x: 400, y: 400}, 'red');
+    for (let i = 0; i < state.bullets.length; i += 1) {
+      createBullet(state.bullets[i].position, state.player1.direction, 'red');
+    }
+    // const bullet = createBullet({x: 400, y: 400}, 'red');
     // const player2Ship = createShip(state.player2.position, state.player2.direction, 'red')
-    // const asteroid1 = createAsteroid(state.asteroids[0].position, state.asteroid1[0].direction, 'red');
+    const asteroid1 = createAsteroid(state.asteroids[0].position, state.asteroids[0].direction, 'red');
+    // console.log("IN REDRAW asteroids:", state.asteroids[0].position, state.asteroids[0].direction)
 }
 
-function redrawShit(state, layer) {
-  new Layer();
-  const bullet = createBullet(state.player1.position, state.player1.direction, 'red');
-}
 module.exports = {
-    redraw,
-    redrawShit
+    redraw
 }
