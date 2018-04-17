@@ -7,6 +7,7 @@ function redraw(state, layer) {
     const player1Ship = createShip(state.player1.position, state.player1.direction, 'cyan')
     // const player2Ship = createShip(state.player2.position, state.player2.direction, 'red')
     const asteroid1 = createAsteroid(state.asteroids[0].position, state.asteroids[0].direction, 'red');
+    console.log("IN REDRAW asteroids:", state.asteroids[0].position, state.asteroids[0].direction)
 }
 
 module.exports = {
