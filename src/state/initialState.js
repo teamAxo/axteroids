@@ -25,6 +25,7 @@ const initialState = {
     action: { id: NaN },
     gameTime: 0,
     asteroidCollision : false,
+    shipCollision: false,
 }
 
 
