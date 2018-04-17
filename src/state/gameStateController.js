@@ -36,7 +36,6 @@ function createGameController(player, socket, serverDelay, serverOffset, startin
         moveAsteroids() {
             const nextState = asteroidReducer(history[history.length - 1]);
             history.push(nextState);
-
         },
 
         currentState(){
