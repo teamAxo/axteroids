@@ -568,6 +568,17 @@ eval("const io = __webpack_require__(/*! socket.io-client */ \"./node_modules/so
 
 /***/ }),
 
+/***/ "./src/rendering/Asteroid.js":
+/*!***********************************!*\
+  !*** ./src/rendering/Asteroid.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+eval("function createAsteroid({ x, y }, direction, color) {\n    var decagon = new Path.RegularPolygon(new Point(120, 70), 20, 37);\n    decagon.fillColor = 'blue';\n    decagon.selected = false;\n    return decagon;\n\n}\n\nmodule.exports = createAsteroid;//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvcmVuZGVyaW5nL0FzdGVyb2lkLmpzPzk0OTQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEseUJBQXlCLE9BQU87QUFDaEM7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7O0FBRUEiLCJmaWxlIjoiLi9zcmMvcmVuZGVyaW5nL0FzdGVyb2lkLmpzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiZnVuY3Rpb24gY3JlYXRlQXN0ZXJvaWQoeyB4LCB5IH0sIGRpcmVjdGlvbiwgY29sb3IpIHtcbiAgICB2YXIgZGVjYWdvbiA9IG5ldyBQYXRoLlJlZ3VsYXJQb2x5Z29uKG5ldyBQb2ludCgxMjAsIDcwKSwgMjAsIDM3KTtcbiAgICBkZWNhZ29uLmZpbGxDb2xvciA9ICdibHVlJztcbiAgICBkZWNhZ29uLnNlbGVjdGVkID0gZmFsc2U7XG4gICAgcmV0dXJuIGRlY2Fnb247XG5cbn1cblxubW9kdWxlLmV4cG9ydHMgPSBjcmVhdGVBc3Rlcm9pZDsiXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/rendering/Asteroid.js\n");
+
+/***/ }),
+
 /***/ "./src/rendering/Ship.js":
 /*!*******************************!*\
   !*** ./src/rendering/Ship.js ***!
@@ -586,7 +597,7 @@ eval("function createShip({ x, y }, direction, color) {\n    var vector = new Po
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const createShip = __webpack_require__(/*! ./Ship */ \"./src/rendering/Ship.js\")\n\nfunction redraw(state, layer) {\n    layer.remove()\n    new Layer()\n    const player1Ship = createShip(state.player1.position, state.player1.direction, 'cyan')\n    // const player2Ship = createShip(state.player2.position, state.player2.direction, 'red')\n    // const asteroid1 = createAsteroid(state.asteroids[0].position, state.asteroid1[0].direction, 'red');\n}\n\nmodule.exports = {\n    redraw\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvcmVuZGVyaW5nL3JlbmRlci5qcz8wYzY4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBOztBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBO0FBQ0E7QUFDQSIsImZpbGUiOiIuL3NyYy9yZW5kZXJpbmcvcmVuZGVyLmpzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiY29uc3QgY3JlYXRlU2hpcCA9IHJlcXVpcmUoJy4vU2hpcCcpXG5cbmZ1bmN0aW9uIHJlZHJhdyhzdGF0ZSwgbGF5ZXIpIHtcbiAgICBsYXllci5yZW1vdmUoKVxuICAgIG5ldyBMYXllcigpXG4gICAgY29uc3QgcGxheWVyMVNoaXAgPSBjcmVhdGVTaGlwKHN0YXRlLnBsYXllcjEucG9zaXRpb24sIHN0YXRlLnBsYXllcjEuZGlyZWN0aW9uLCAnY3lhbicpXG4gICAgLy8gY29uc3QgcGxheWVyMlNoaXAgPSBjcmVhdGVTaGlwKHN0YXRlLnBsYXllcjIucG9zaXRpb24sIHN0YXRlLnBsYXllcjIuZGlyZWN0aW9uLCAncmVkJylcbiAgICAvLyBjb25zdCBhc3Rlcm9pZDEgPSBjcmVhdGVBc3Rlcm9pZChzdGF0ZS5hc3Rlcm9pZHNbMF0ucG9zaXRpb24sIHN0YXRlLmFzdGVyb2lkMVswXS5kaXJlY3Rpb24sICdyZWQnKTtcbn1cblxubW9kdWxlLmV4cG9ydHMgPSB7XG4gICAgcmVkcmF3XG59Il0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./src/rendering/render.js\n");
+eval("const createShip = __webpack_require__(/*! ./Ship */ \"./src/rendering/Ship.js\")\nconst createAsteroid =  __webpack_require__(/*! ./Asteroid */ \"./src/rendering/Asteroid.js\");\n\nfunction redraw(state, layer) {\n    layer.remove()\n    new Layer()\n    const player1Ship = createShip(state.player1.position, state.player1.direction, 'cyan')\n    // const player2Ship = createShip(state.player2.position, state.player2.direction, 'red')\n    const asteroid1 = createAsteroid(state.asteroids[0].position, state.asteroids[0].direction, 'red');\n}\n\nmodule.exports = {\n    redraw\n}//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9zcmMvcmVuZGVyaW5nL3JlbmRlci5qcz8wYzY4Il0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7O0FBRUE7QUFDQTtBQUNBIiwiZmlsZSI6Ii4vc3JjL3JlbmRlcmluZy9yZW5kZXIuanMuanMiLCJzb3VyY2VzQ29udGVudCI6WyJjb25zdCBjcmVhdGVTaGlwID0gcmVxdWlyZSgnLi9TaGlwJylcbmNvbnN0IGNyZWF0ZUFzdGVyb2lkID0gIHJlcXVpcmUoJy4vQXN0ZXJvaWQnKTtcblxuZnVuY3Rpb24gcmVkcmF3KHN0YXRlLCBsYXllcikge1xuICAgIGxheWVyLnJlbW92ZSgpXG4gICAgbmV3IExheWVyKClcbiAgICBjb25zdCBwbGF5ZXIxU2hpcCA9IGNyZWF0ZVNoaXAoc3RhdGUucGxheWVyMS5wb3NpdGlvbiwgc3RhdGUucGxheWVyMS5kaXJlY3Rpb24sICdjeWFuJylcbiAgICAvLyBjb25zdCBwbGF5ZXIyU2hpcCA9IGNyZWF0ZVNoaXAoc3RhdGUucGxheWVyMi5wb3NpdGlvbiwgc3RhdGUucGxheWVyMi5kaXJlY3Rpb24sICdyZWQnKVxuICAgIGNvbnN0IGFzdGVyb2lkMSA9IGNyZWF0ZUFzdGVyb2lkKHN0YXRlLmFzdGVyb2lkc1swXS5wb3NpdGlvbiwgc3RhdGUuYXN0ZXJvaWRzWzBdLmRpcmVjdGlvbiwgJ3JlZCcpO1xufVxuXG5tb2R1bGUuZXhwb3J0cyA9IHtcbiAgICByZWRyYXdcbn0iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./src/rendering/render.js\n");
 
 /***/ }),
 
