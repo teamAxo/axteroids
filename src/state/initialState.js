@@ -1,5 +1,5 @@
 const player1 = {
-    position: { x: 200, y: 100 },
+    position: { x: 450, y: 320 },
     direction: { x: 0, y: 1 },
     turnDirection: null,
     isMoving: false,
@@ -10,8 +10,8 @@ const player1 = {
 
 const asteroid1 = {
     position: {x: 70, y: 80},
-    direction: {x: .6, y: -.2},
-    velocity: {x: 1, y: 1},
+    direction: {x: 1, y: 0},
+    velocity: {x: .15, y: .15},
     speed: .15,
 }
 
