@@ -7,6 +7,8 @@ const collisionReducer = require('./collisionReducer');
 const tickCombine = require('../ticks/tickCombine');
 
 function createGameController(player, socket, serverDelay, serverOffset, startingGameTime) {
+    console.log('sever delay: ', serverDelay, 'serverOffset: ', serverOffset)
+    console.log(`${player} has joined the game`)  
     let actionID = 0;
     initialState.gameTime = startingGameTime;
     let history = [initialState];
@@ -16,6 +18,9 @@ function createGameController(player, socket, serverDelay, serverOffset, startin
         if (action.player === player) {
             serverDelay = (currentTime - action.atPlayerTime) / 2;
             history = history;
+        } else {
+          history = insertAction(history, action)
+          console.log('inject action ', action, 'into ', history.map(({ action }) => action))
         }
     })
     
@@ -50,6 +55,33 @@ function createGameController(player, socket, serverDelay, serverOffset, startin
             return tickCombine(history[history.length - 1], gameTime);
         }
     }
+}
+
+function insertAction(history, newAction) {
+  for (let i = history.length - 1; i >= 0; i--) {
+      if (history[i].gameTime < newAction.atServerTime) {
+          const previousHistory = history.slice(0, i + 1)
+          const newHistory = recomputeWithAction(
+            history.slice(i + 1), 
+            newAction,
+            previousHistory[previousHistory.length - 1]
+          )
+          return previousHistory.concat(newHistory)
+      }
+  }
+}
+
+function recomputeWithAction(history, action, startingState) {
+  const actionList = history.map(({ action }) => action)
+  actionList.unshift(action)
+  return actionList.reduce(
+      (state, action) => {
+          const nextState = reducer(state[state.length - 1], action)
+          state.push(nextState)
+          return state
+      }
+      , [startingState]
+  ).slice(1)
 }
 
 module.exports = createGameController;
