@@ -3,6 +3,7 @@ const { initialState } = require('./initialState');
 const actions = require('./actions');
 
 const asteroidReducer = require('./asteroidReducer');
+const bulletReducer = require('./bulletReducer');
 const collisionReducer = require('./collisionReducer');
 const collisionShipReducer = require('./collisionShipReducer');
 
@@ -32,7 +33,7 @@ function createGameController(player, socket, serverDelay, serverOffset, startin
             action = decorateAction(action, currentTime);
             socket.emit('clientAction', action);
             action.atServerTime = currentTime - serverDelay + serverOffset;
-            const nextState = reducer(history[history.length - 1], action);
+            const nextState = reducer(history[history.length - 1], action, history);
             history.push(nextState);
         },
 
@@ -41,9 +42,15 @@ function createGameController(player, socket, serverDelay, serverOffset, startin
             history.push(nextState);
         },
 
+        moveBullets() {
+          const nextState = bulletReducer(history[history.length - 1]);
+          history.push(nextState);
+        },
+
         currentState(){
             //move asteroids even when there are no user actions
             this.moveAsteroids();
+            this.moveBullets();
             let gameTime = Date.now() - serverDelay + serverOffset;
 
             if (collisionReducer(history[history.length - 1], gameTime).asteroidCollision) {
@@ -53,7 +60,7 @@ function createGameController(player, socket, serverDelay, serverOffset, startin
             if (collisionShipReducer(history[history.length - 1], gameTime).shipCollision){
                 history = [initialState];
             }
-            
+
             // console.log('Inside currentState (gameController): State: ', history[history.length - 1], gameTime);
             return tickCombine(history[history.length - 1], gameTime);
         }

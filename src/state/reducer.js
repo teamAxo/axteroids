@@ -23,7 +23,7 @@ function reducer(state, action) {
             return { ...updatedPlayer, action };
 
         case 'start accelerating':
-        // updatedPositions = state; 
+        // updatedPositions = state;
           updatedPositions = tickCombine(state, action.atServerTime);
           nextPlayer = updateProperty(updatedPositions.player1, 'isAccelerating', true);
           updatedPlayer = updateProperty(updatedPositions, action.player, nextPlayer);
@@ -49,12 +49,12 @@ function reducer(state, action) {
         case 'shoot':
             updatedPositions = tickCombine(state, action.atServerTime);
             const newBullet = {
-              position: state.player1.position,
-              direction: state.player1.direction,
+              position: updatedPositions.player1.position,
+              direction: updatedPositions.player1.direction,
+              velocity: {x:3, y:3},
             };
-            const bullets = [...state.bullets, newBullet];
+            const bullets = [...updatedPositions.bullets, newBullet];
             const newState = { ...updatedPositions, bullets };
-            // console.log(newState);
             return newState;
 
         default: return state;

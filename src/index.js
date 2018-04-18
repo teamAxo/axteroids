@@ -67,10 +67,5 @@ window.onload = function () {
             const currentState = gameController.currentState();
             redraw(currentState, project.activeLayer);
         }
-
-        // if (event.key === 'space') {
-        //   const currentState = gameController.currentState();
-        //   redrawShit(currentState, project.activeLayer);
-        // }
     }
 };

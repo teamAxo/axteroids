@@ -5,7 +5,7 @@ function collisionShipReducer(state, gameTime){
     let newState = tickCombine(state, gameTime);
     const ship = newState.player1;
     let shipCollision = newState.shipCollision;
-    
+
     if (ship.position.x <= 20){
         shipCollision = true;
     }
@@ -23,7 +23,7 @@ function collisionShipReducer(state, gameTime){
     }
 
     return {...state, shipCollision};
-    
+
 }
 
 module.exports = collisionShipReducer;
