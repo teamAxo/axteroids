@@ -15,6 +15,13 @@ const asteroid1 = {
     speed: .15,
 }
 
+const bullet = {
+  position: {x: 0, y: 0},
+  direction: {x: 0, y: 0},
+  velocity: {x: 4, y: 4},
+  speed: .2,
+}
+
 const player2 = player1
 
 const initialState = {
