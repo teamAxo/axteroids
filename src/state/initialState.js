@@ -1,5 +1,5 @@
 const player1 = {
-    position: { x: 400, y: 400 },
+    position: { x: 200, y: 100 },
     direction: { x: 0, y: 1 },
     turnDirection: null,
     isMoving: false,

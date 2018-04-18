@@ -15,7 +15,7 @@ function newAstPosition(asteroid, timeDelta) {
     //x high = 775
     //x low = -3
 
-    console.log('New position being added!', asteroid.position)
+    // console.log('New position being added!', asteroid.position)
     return { x: asteroid.position.x, y: asteroid.position.y };
 } 
 

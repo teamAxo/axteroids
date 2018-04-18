@@ -60,6 +60,7 @@ window.onload = function () {
     };
 
     view.onFrame = function (event) {
+        console.log('Window inner height: ', window.innerHeight, window.innerWidth)
         if (gameController) {
             const currentState = gameController.currentState();
             redraw(currentState, project.activeLayer);
