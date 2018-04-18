@@ -44,15 +44,16 @@ function createGameController(player, socket, serverDelay, serverOffset, startin
 
         moveBullets() {
           const nextState = bulletReducer(history[history.length - 1]);
+          console.log(nextState.bullets);
           history.push(nextState);
         },
 
         currentState(){
             //move asteroids even when there are no user actions
             this.moveAsteroids();
-            this.moveBullets();
             let gameTime = Date.now() - serverDelay + serverOffset;
-
+            this.moveBullets();
+            // console.log(gameTime);
             if (collisionReducer(history[history.length - 1], gameTime).asteroidCollision) {
               history = [initialState];
             }

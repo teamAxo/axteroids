@@ -51,7 +51,7 @@ function reducer(state, action) {
             const newBullet = {
               position: updatedPositions.player1.position,
               direction: updatedPositions.player1.direction,
-              velocity: {x:3, y:3},
+              speed: 5,
             };
             const bullets = [...updatedPositions.bullets, newBullet];
             const newState = { ...updatedPositions, bullets };
