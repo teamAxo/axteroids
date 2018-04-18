@@ -4,7 +4,7 @@ const socket = io();
 
 const paper = require('paper');
 
-const { redraw } = require('./rendering/render');
+const { redraw, redrawShit } = require('./rendering/render');
 const createGameController = require('./state/gameStateController');
 
 //TODO: make sure Date.now() works as expected
@@ -38,6 +38,9 @@ window.onload = function () {
                     break;
                 case 'up':
                     gameController.initiateAction(actions.startAccelerating());
+                    break;
+                case 'space':
+                    gameController.initiateAction(actions.shoot());
                     break;
             }
         }

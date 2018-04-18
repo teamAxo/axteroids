@@ -25,9 +25,9 @@ io.on('connection', (socket) => {
         socket.player = 'player2'
     }
 
-    //Setting listeners for client side actions 
+    //Setting listeners for client side actions
     if (socket.player) {
-        //this is a custom action coming from the client side 
+        //this is a custom action coming from the client side
         //located at index.js
         socket.on('clientInitialize', (timeStamp) => {
             timeStamp.player = socket.player
@@ -35,15 +35,15 @@ io.on('connection', (socket) => {
             socket.emit('serverInitialize', timeStamp)
         })
 
-        //Anytime the user does something, 
-        //we catch that action here and then emit 
+        //Anytime the user does something,
+        //we catch that action here and then emit
         //that action back all the clients
         socket.on('clientAction', (action) => {
             action.atServerTime = Date.now()
             io.emit('serverAction', action)
         })
 
-        //This is not custom. Socket.io disconnect 
+        //This is not custom. Socket.io disconnect
         //built in function that handles user leaving the page
         socket.on('disconnect', () => {
             delete players[socket.player]

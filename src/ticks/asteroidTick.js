@@ -9,7 +9,7 @@ function asteroidTick(asteroid, oldTime, newTime) {
 };
 
 function newAstPosition(asteroid, timeDelta) {
-    //borders 
+    //borders
     //high y = 10
     //low y = 585
     //x high = 775
@@ -17,6 +17,6 @@ function newAstPosition(asteroid, timeDelta) {
 
     // console.log('New position being added!', asteroid.position)
     return { x: asteroid.position.x, y: asteroid.position.y };
-} 
+}
 
 module.exports = asteroidTick;

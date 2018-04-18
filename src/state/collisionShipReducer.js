@@ -7,7 +7,7 @@ function collisionShipReducer(state, gameTime){
     let shipCollision = newState.shipCollision;
 
     let minWindowDimension = window.innerWidth > window.innerHeight ? window.innerHeight : window.innerWidth;
-    
+
     if (ship.position.x <= 20){
         shipCollision = true;
     }
@@ -25,7 +25,7 @@ function collisionShipReducer(state, gameTime){
     }
 
     return {...state, shipCollision};
-    
+
 }
 
 module.exports = collisionShipReducer;
