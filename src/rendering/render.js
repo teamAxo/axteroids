@@ -10,6 +10,7 @@ function redraw(state, layer) {
       createBullet(bullet.position, state.player1.direction, bullet.velocity);
     })
     // const player2Ship = createShip(state.player2.position, state.player2.direction, 'red')
+    console.log('render', state.asteroids[0])
     const asteroid1 = createAsteroid(state.asteroids[0].position, state.asteroids[0].direction, 'red');
     // console.log("IN REDRAW asteroids:", state.asteroids[0].position, state.asteroids[0].direction)
 }
