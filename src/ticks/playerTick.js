@@ -47,7 +47,7 @@ function currentVelocity(player, newTime) {
 
 function nextDriftPosition(player, newTime) {
   const tS = newTime-player.velocity.time; // time since acceleration
-  const dC = 0.9999; // Drift coefficient
+  const dC = 0.9998; // Drift coefficient
   //Create a new point in paper.js with the next x, y coordinates 
   startPosition = new Point(player.position.x, player.position.y);
   //Set the new point (direction) for player to head toward
